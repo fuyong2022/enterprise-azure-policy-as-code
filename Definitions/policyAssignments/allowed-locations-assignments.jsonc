@@ -1,0 +1,56 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/Loc/",
+  "assignment": {
+    "name": "allowed-locations",
+    "displayName": "Allowed Locations",
+    "description": "Sets the allowed locations"
+  },
+  "definitionEntry": {
+    "policySetName": "allowed-locations-initiative",
+    "displayName": "Allowed Locations Initiative"
+  },
+  "children": [
+    {
+      "nodeName": "Prod/",
+      "assignment": {
+        "name": "-pr",
+        "displayName": " - Prod",
+        "description": " for Prod Environment"
+      },
+      "parameters": {
+        "AllowedLocations": [
+          "australiaeast",
+          "australiasoutheast",
+          "australiacentral"
+        ]
+      },
+      "scope": {
+        "tenant": [
+          "/providers/Microsoft.Management/managementGroups/mg-epac-prod"
+        ]
+      }
+    },
+    {
+      "nodeName": "NonProd/",
+      "assignment": {
+        "name": "-np",
+        "displayName": " - NonProd",
+        "description": " for Non Prod Environment"
+      },
+      "parameters": {
+        "AllowedLocations": [
+          "australiaeast"
+        ]
+      },
+      "scope": {
+        "epac-dev": [
+          "/providers/Microsoft.Management/managementGroups/epac-dev"
+        ],
+        "tenant": [
+          "/providers/Microsoft.Management/managementGroups/mg-epac-nonprod"
+        ]
+      }
+    }
+  ]
+}

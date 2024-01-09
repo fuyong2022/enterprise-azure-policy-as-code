@@ -1,0 +1,22 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/CIS/",
+  "assignment": {
+    "name": "cis-v2",
+    "displayName": "CIS v2"
+  },
+  "definitionEntry": {
+    "policySetId": "/providers/Microsoft.Authorization/policySetDefinitions/06f19060-9e68-4070-92ca-f15cc126059e"
+  },
+  "parameters": {
+    "maximumDaysToRotate-d8cf8476-a2ec-4916-896e-992351803c44": 365
+  },
+  "scope": {
+    "epac-dev": [
+      "/providers/Microsoft.Management/managementGroups/epac-dev"
+    ],
+    "tenant": [
+      "/providers/Microsoft.Management/managementGroups/mg-epac-root"
+    ]
+  }
+}

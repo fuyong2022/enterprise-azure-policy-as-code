@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/global-settings-schema.json",
+  "pacOwnerId": "11111111-2222-3333-4444-555555555555",
+  "pacEnvironments": [
+    {
+      "pacSelector": "epac-dev",
+      "cloud": "AzureCloud",
+      "tenantId": "4b9ee2e5-0bae-4109-ac6e-0c8dc94fa7c1",
+      "deploymentRootScope": "/providers/Microsoft.Management/managementGroups/epac-dev"
+    },
+    {
+      "pacSelector": "tenant",
+      "cloud": "AzureCloud",
+      "tenantId": "4b9ee2e5-0bae-4109-ac6e-0c8dc94fa7c1",
+      "deploymentRootScope": "/providers/Microsoft.Management/managementGroups/mg-epac-root", // replaces rootScope
+      "inheritedDefinitionsScopes": [ ], // [optional] inherited definition scopes used but not managed by this repository, scopes must be visible from deploymentScope
+      "desiredState": { // [optional]
+        "strategy": "ownedOnly", // default full
+        // full      = delete any unknown assignments and Policy/Set definitions in managed scope not containing metadata.pacOwnerId
+        // ownedOnly = delete only our own assignments as indicated by metadata.pacOwnerId field
+        "includeResourceGroups": false,
+        "excludedScopes": [
+          // Management Groups
+          // Subscriptions
+          // Resource Groups
+        ],
+        "excludedPolicyDefinitions": [
+          // wild cards allowed
+        ],
+        "excludedPolicySetDefinitions": [
+          // wild cards allowed
+        ],
+        "excludedPolicyAssignments": [
+          // wild cards allowed
+        ]
+      }
+    }
+  ],
+  "managedIdentityLocations": {
+    "*": "australiaeast"
+  },
+  "globalNotScopes": {
+    "*": [
+      "/resourceGroupPatterns/excluded-rg*"
+    ],
+    "tenant": [
+      "/providers/Microsoft.Management/managementGroups/epac-dev"
+    ]
+  }
+}

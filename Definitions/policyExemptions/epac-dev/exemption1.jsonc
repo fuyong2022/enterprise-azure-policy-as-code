@@ -1,0 +1,13 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-exemption-schema.json",
+  "exemptions": [
+    {
+      "name": "epac-dev-exemption1",
+      "displayName": "Exempt specific DEV resource group",
+      "description": "",
+      "exemptionCategory": "Waiver",
+      "scope": "/subscriptions/f63af5b5-220f-49fe-8e15-b10db5887a17/resourceGroups/rg-test-01",
+      "policyAssignmentId": "/providers/microsoft.management/managementgroups/epac-dev/providers/microsoft.authorization/policyassignments/allowed-locations-np"
+    }
+  ]
+}

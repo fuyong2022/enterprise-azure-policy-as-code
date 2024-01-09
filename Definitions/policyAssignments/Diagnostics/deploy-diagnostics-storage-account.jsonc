@@ -1,0 +1,23 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/Diag/",
+  "assignment": {
+    "name": "diag-sa",
+    "displayName": "Configure diagnostic settings for Storage Accounts to Log Analytics workspace"
+  },
+  "definitionEntry": {
+    "policyId": "/providers/Microsoft.Authorization/policyDefinitions/59759c62-9a22-4cdf-ae64-074495983fef"
+  },
+  "parameters": {
+    "profileName": "default",
+    "logAnalytics": "/subscriptions/2144d439-e9ee-42fb-9723-0ae2287be031/resourcegroups/rg-aue-management-01/providers/microsoft.operationalinsights/workspaces/law-aue-management-01"
+  },
+  "scope": {
+    "epac-dev": [
+      "/providers/Microsoft.Management/managementGroups/epac-dev"
+    ],
+    "tenant": [
+      "/providers/Microsoft.Management/managementGroups/mg-epac-root"
+    ]
+  }
+}
